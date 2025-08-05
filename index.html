@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Conta & Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="firebaseauth.js"></script>
+</head>
+
+<body>
+    <div class="container" id="signup" style="display:none;">
+        <h1 class="form-title">Crie sua conta</h1>
+        <form method="post" action="">
+            <div id="signUpMessage" class="messageDiv" style="display:none;"></div>
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="fName" placeholder=" " required>
+                <label for="fName">Nome</label>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="lName" placeholder=" " required>
+                <label for="lName">Sobrenome</label>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="rEmail" placeholder=" " required>
+                <label for="rEmail">E-mail</label>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="rPassword" placeholder=" " required>
+                <label for="rPassword">Senha</label>
+            </div>
+            <button type="button" class="btn" id="submitSignUp">Criar conta</button>
+        </form>
+        <div class="icons">
+            <i class="fab fa-google"></i>
+        </div>
+        <div class="links">
+            <p>Possui uma conta?</p>
+            <button id="signInButton">Fazer Login</button>
+        </div>
+    </div>
+
+    <div class="container" id="signIn">
+        <h1 class="form-title">Fazer Login</h1>
+        <form method="post" action="">
+            <div id="signInMessage" class="messageDiv" style="display:none;"></div>
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" placeholder=" " required>
+                <label for="email">E-mail</label>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" placeholder=" " required>
+                <label for="password">Senha</label>
+            </div>
+            <p class="recover">
+                <a href="#">Recuperar Senha</a>
+            </p>
+            
+
+            <button type="button" class="btn" id="submitSignIn">Entrar</button>
+        </form>
+        <div class="icons">
+            <i class="fab fa-google"></i>
+        </div>
+        <div class="links">
+            <p>Não tem uma conta?</p>
+            <button id="signUpButton">Criar conta</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

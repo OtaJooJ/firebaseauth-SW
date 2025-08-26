@@ -1,6 +1,6 @@
 // Importa as funções necessárias do firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-import { getAuth, GoogleProvider, signOut, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+import { getAuth, GoogleAuthProvider, signOut, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 import { getFirestore, getDoc, doc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 // Configuração do Firebase
@@ -16,12 +16,12 @@ const firebaseConfig = {
 // Inicializa o firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(); // Configura o firebase Authentication
-const dbo = getFirestore(); // Configura o firestore
+const db = getFirestore(); // Configura o firestore
 
 // Monitora o estado de autenticação do usuário
 onAuthStateChanged(auth, (user) => {
     // Busca o ID do usuário autenticado salvo no localStorage
-    const loggedInUserId = localStorage.getItem("loggenInUserId");
+    const loggedInUserId = localStorage.getItem("loggedInUserId");
     
     // Se o ID estiver no localSotrage, tenta obter os dados do Firestore
     if (loggedInUserId) {
@@ -32,7 +32,7 @@ onAuthStateChanged(auth, (user) => {
         .then((docSnap) => {
             // Se o documento existir, exibe os dados na interface
             if (docSnap.exists()) {
-                const userData = docSnap.data;
+                const userData = docSnap.data();
                 document.getElementById("loggedUserFName").innerText = userData.firstName;
                 document.getElementById("loggedUserLName").innerText = userData.lastName;
                 document.getElementById("loggedUserEmail").innerText = userData.email;

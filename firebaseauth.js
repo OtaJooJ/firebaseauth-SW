@@ -1,7 +1,7 @@
 // Importa as funções necessárias do firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-import { getAuth, GoogleProvider, signOut, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-import { getFirestore, getDoc, doc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+import { getAuth, GoogleAuthProvider, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 // Configuração do Firebase
 const firebaseConfig = {
@@ -28,8 +28,8 @@ function showMessage(message, divId) {
 }
 
 // Lógica de cadastro de novos usuários
-const signUp = document.getElementById("submitSignUp");
-signUp.addEventListener("click", (event) => {
+const signUp = document.getElementById('submitSignUp');
+signUp.addEventListener('click', (event) => {
     event.preventDefault(); //Previne o comportamento padrão do botão
 
     // Adicionar os dados do formulário de cadastro
@@ -61,7 +61,7 @@ signUp.addEventListener("click", (event) => {
     .catch((error) => {
         const errorCode = error.code;
         if (errorCode == "auth/email-already-in-use") {
-            showMessage("Endereçõ de email já existe")
+            showMessage("Endereço de email já existe")
         } else {
             showMessage("Não é possível criar usuário", "signUpMessage");
         }
@@ -86,6 +86,7 @@ signIn.addEventListener("click", (event) => {
 
         // Salva o ID do usuário no localStorage
         localStorage.setItem("loggedInUserId", user.uid);
+        console.log("USER UID: " + user.uid)
 
         window.location.href = "homepage.html"; //Redireciona para a página inicial
     })

@@ -99,3 +99,10 @@ signIn.addEventListener("click", (event) => {
         }
     });
 });
+
+const signInWithGoogle = document.getElementById("signInWithGoogle");
+signInWithGoogle.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const provider = new GoogleAuthProvider();
+})

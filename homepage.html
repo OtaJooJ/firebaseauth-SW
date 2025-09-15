@@ -48,6 +48,14 @@
             color: #333;
         }
 
+        .photo {
+            width: 100px;
+            height: 100px;
+            display:flex;
+            justify-self: center;
+            margin-top: 5%;
+        }
+
         button {
             color: #fff;
             background-color: #1D6DCD;
@@ -86,8 +94,9 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="container">
         <h1>Bem-vindo à sua conta</h1>
+        
         <div class="info">Nome: <span id="loggedUserFName"></span></div>
         <div class="info">Sobrenome: <span id="loggedUserLName"></span></div>
         <div class="info">E-mail: <span id="loggedUserEmail"></span></div>

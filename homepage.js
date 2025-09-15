@@ -36,6 +36,16 @@ onAuthStateChanged(auth, (user) => {
                 document.getElementById("loggedUserFName").innerText = userData.firstName;
                 document.getElementById("loggedUserLName").innerText = userData.lastName;
                 document.getElementById("loggedUserEmail").innerText = userData.email;
+                
+                console.log(userData.userPhoto)
+                if (userData.userPhoto) {
+                    var fotoDiv = document.createElement("div");
+                    fotoDiv.className = "photo";
+                    fotoDiv.innerHTML = `<img src="${userData.userPhoto}" style="width: 100%; height: 100%;">`;
+                    console.log(fotoDiv)
+
+                    document.getElementById("container").appendChild(fotoDiv)
+                }
             } else {
                 console.log("ID não encontrado no Documento");
             }
